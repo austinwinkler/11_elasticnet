@@ -249,11 +249,16 @@ Now, let's create a **grid** to perform our hyperparameter tuninig search with m
 
 ```{r enet_grid}
 enet_grid <- crossing(penalty = seq(0, 
-                                    100, 
-                                    by = 10),
-                      mixture = seq(0, 
                                     1, 
-                                    by = 0.2))
+                                    by = .05),
+                      mixture = seq(0, 
+                                    0.2, 
+                                    by = 0.01))
+
+enet_grid <- grid_regular(penalty(),
+                          mixture(),
+                          levels = list(penalty = 50,
+                                        mixture = 10))
 
 enet_grid
 ```
